@@ -33,3 +33,4 @@ kubectl apply -f trident-installer.yaml
 
 Here is a short example:
 [![asciicast](https://asciinema.org/a/gKTMvKguMYOINNOtcNxSiZCKR.svg)](https://asciinema.org/a/)
+
