@@ -1,3 +1,8 @@
+<<<<<<< README.md
+# TRIDENT INSTALLER
+last update
+=======
 ## TRIDENT INSTALLER
 
-last update:
+last update
+>>>>>>> README.md
