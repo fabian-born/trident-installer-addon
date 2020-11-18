@@ -1,1 +1,1 @@
-# Addons for my Trident installer
+# Addons for my Trident installer 
