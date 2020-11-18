@@ -62,11 +62,11 @@ stringData:
       "version": 1,
       "storageDriverName": "ontap-nas",
       "backendName": "ontapnas",
-      "managementLIF": "192.168.69.60",
-      "dataLIF": "192.168.69.61",
-      "svm": "optimusprime",
-      "username": "vsadmin",
-      "password": "netapp123",
+      "managementLIF": "<ip>",
+      "dataLIF": "<ip>",
+      "svm": "svmname",
+      "username": "trident-user",
+      "password": "password",
       "storagePrefix": "nas"
     }
   backend-san.json: |-
@@ -74,10 +74,10 @@ stringData:
       "version": 1,
       "storageDriverName": "ontap-san",
       "backendName": "ontapsan",
-      "managementLIF": "192.168.69.63",
-      "svm": "bumblebee",
-      "username": "vsadmin",
-      "password": "netapp123",
+      "managementLIF": "<ip>",
+      "svm": "svmname",
+      "username": "trident-user",
+      "password": "password",
       "storagePrefix": "prod_k8s",
       "igroupName": "prod_k8s",
       "useCHAP": false,
@@ -123,8 +123,8 @@ data:
     kubectl apply -f /opt/trident-installer/deploy/crds/trident.netapp.io_tridentprovisioners_crd_post1.16.yaml
     kubectl apply -f /opt/trident-installer/deploy/bundle.yaml
     kubectl apply -f /opt/trident-installer/deploy/crds/tridentprovisioner_cr.yaml
-    kubectl apply -f https://raw.githubusercontent.com/fabian-born/k8s-trident-installer/master/patch/tprov-rke-patch.yaml
-    sleep 10
+    
+    sleep 30
     i="0"
     until kubectl describe tprov trident -n trident | grep "Status:.*Installed"
     do
