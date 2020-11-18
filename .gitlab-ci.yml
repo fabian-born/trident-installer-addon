@@ -52,14 +52,3 @@ jsonlint:
       if [ "${FAILED}" = "1" ]; then
         exit 1
       fi
-
-markdownlint:
-  <<: *preflight
-  image:
-    name: ruby:alpine
-    entrypoint: [""]
-  before_script:
-    - gem install mdl
-    - mdl --version
-  script:
-    - mdl --style all --warnings .
