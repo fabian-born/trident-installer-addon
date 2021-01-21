@@ -1,9 +1,6 @@
 # New Trident Installer
 ### Docker Image to setup NetApp Trident in a Kubernetes Cluster
 
-![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/fabianborn/dev-trident-installer)
-
-
 #### Now you can install the installer by using kubectl:
 
 This yaml-file deploys the NetApp Trident storage provisioner to a kubernetes cluster. Before you apply the configuration the backend.json must be defined:

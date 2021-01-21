@@ -34,7 +34,7 @@ spec:
       serviceAccountName: trident-installer
       containers:
         - name: trident-installer
-          image: fabianborn/dev-trident-installer:20.10.1
+          image: fabianborn/trident-installer-addon:latest
           volumeMounts:
             - name: manifests
               mountPath: /manifests
