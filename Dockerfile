@@ -1,6 +1,6 @@
 ### specify trident release version e.g. 20.07.0
 ARG TRIDENT_VERSION
-FROM bitnami/kubectl:1.18
+FROM bitnami/kubectl:1.19
 ARG TRIDENT_VERSION
 RUN echo $TRIDENT_VERSION
 RUN cd /opt \
