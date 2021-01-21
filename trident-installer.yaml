@@ -62,11 +62,11 @@ stringData:
       "version": 1,
       "storageDriverName": "ontap-nas",
       "backendName": "ontapnas",
-      "managementLIF": "192.168.69.60",
-      "dataLIF": "192.168.69.61",
-      "svm": "optimusprime",
-      "username": "vsadmin",
-      "password": "netapp123",
+      "managementLIF": "<ip-mgmt>",
+      "dataLIF": "<ip-datalif>",
+      "svm": "<svm-name>",
+      "username": "trident_user",
+      "password": "passw0rd",
       "storagePrefix": "nas"
     }
   backend-san.json: |-
@@ -74,12 +74,12 @@ stringData:
       "version": 1,
       "storageDriverName": "ontap-san",
       "backendName": "ontapsan",
-      "managementLIF": "192.168.69.62",
-      "svm": "bumblebee",
-      "username": "vsadmin",
-      "password": "netapp123",
-      "storagePrefix": "prod_k8s",
-      "igroupName": "prod_k8s",
+      "managementLIF": "<ip-mgmt>",
+      "svm": "<svm-name>",
+      "username": "trident_user",
+      "password": "passw0rd",
+      "storagePrefix": "san",
+      "igroupName": "<igroup-name>",
       "useCHAP": false,
       "defaults": {
           "spaceReserve": "volume",
@@ -124,12 +124,12 @@ data:
     kubectl apply -f /opt/trident-installer/deploy/bundle.yaml
     kubectl apply -f /opt/trident-installer/deploy/crds/tridentprovisioner_cr.yaml
     
-    sleep 30
+    sleep 5
     i="0"
     until kubectl describe tprov trident -n trident | grep "Status:.*Installed"
     do
-      sleep 30
-      if [ ! $i -lt 30 ]; then
+      sleep 10
+      if [ ! $i -lt 40 ]; then
         exit 1
       fi
     done
