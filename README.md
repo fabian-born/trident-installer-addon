@@ -35,4 +35,4 @@ docker build --build-arg TRIDENT_VERSION=20.10.1 -t <myusername>/my-trident-inst
 ```
 
 Here is a short example:
-[![asciicast](https://asciinema.org/a/385943.svg)](https://asciinema.org/a/385943?speed=7)
+[![asciicast](https://asciinema.org/a/385943.svg)](https://asciinema.org/a/385943?speed=7&autoplay=1)
