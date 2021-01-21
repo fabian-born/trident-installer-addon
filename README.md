@@ -29,7 +29,10 @@ backend.json: |-
 kubectl apply -f trident-installer.yaml
 ```
 
-
+#### Build your own Docker-Container:
+```
+docker build --build-arg TRIDENT_VERSION=20.10.1 -t <myusername>/my-trident-installer:20.10.1 . 
+```
 
 Here is a short example:
 [![asciicast](https://asciinema.org/a/gKTMvKguMYOINNOtcNxSiZCKR.svg)](https://asciinema.org/a/)

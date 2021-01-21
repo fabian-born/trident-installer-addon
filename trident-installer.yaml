@@ -34,7 +34,7 @@ spec:
       serviceAccountName: trident-installer
       containers:
         - name: trident-installer
-          image: fabianborn/dev-trident-installer:20.10.0
+          image: fabianborn/dev-trident-installer:20.10.1
           volumeMounts:
             - name: manifests
               mountPath: /manifests
@@ -62,11 +62,11 @@ stringData:
       "version": 1,
       "storageDriverName": "ontap-nas",
       "backendName": "ontapnas",
-      "managementLIF": "<ip>",
-      "dataLIF": "<ip>",
-      "svm": "svmname",
-      "username": "trident-user",
-      "password": "password",
+      "managementLIF": "192.168.69.60",
+      "dataLIF": "192.168.69.61",
+      "svm": "optimusprime",
+      "username": "vsadmin",
+      "password": "netapp123",
       "storagePrefix": "nas"
     }
   backend-san.json: |-
@@ -74,10 +74,10 @@ stringData:
       "version": 1,
       "storageDriverName": "ontap-san",
       "backendName": "ontapsan",
-      "managementLIF": "<ip>",
-      "svm": "svmname",
-      "username": "trident-user",
-      "password": "password",
+      "managementLIF": "192.168.69.62",
+      "svm": "bumblebee",
+      "username": "vsadmin",
+      "password": "netapp123",
       "storagePrefix": "prod_k8s",
       "igroupName": "prod_k8s",
       "useCHAP": false,
@@ -110,7 +110,7 @@ data:
     apiVersion: storage.k8s.io/v1
     kind: StorageClass
     metadata:
-      name: trident-
+      name: trident_nas
       annotations:
         storageclass.kubernetes.io/is-default-class: "true"
     provisioner: netapp.io/trident
@@ -133,6 +133,8 @@ data:
         exit 1
       fi
     done
-    /opt/trident-installer/tridentctl -n trident create backend -f /backend/backend.json
+    for backendfile in /backend/*.json; do
+    	/opt/trident-installer/tridentctl -n trident create backend -f /backend/$(basename $backendfile)
+    done
     kubectl apply -f /manifests/storage_class_trident.yaml
     kubectl delete job.batch -n trident trident-installer
