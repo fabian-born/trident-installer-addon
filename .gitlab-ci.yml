@@ -52,3 +52,24 @@ jsonlint:
       if [ "${FAILED}" = "1" ]; then
         exit 1
       fi
+
+
+yamllint:
+  <<: *preflight
+  image: sdesbure/yamllint:latest
+  before_script:
+    - yamllint --version || true
+  script:
+    - |
+      for file in $(find . -type f -name "*.yaml"); do
+        if ! yamllint $file; then
+          export FAILED=1
+        else
+          echo "$file OK"
+        fi
+      done
+      if [ "${FAILED}" = "1" ]; then
+        exit 0
+      fi
+
+
