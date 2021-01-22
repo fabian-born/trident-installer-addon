@@ -2,6 +2,7 @@
 ARG TRIDENT_VERSION
 FROM bitnami/kubectl:1.19
 ARG TRIDENT_VERSION
+RUN if [ "$TRIDENT_VERSION" = "" ] ; then TRIDENT_VERSION=20.10.1 ; fi
 RUN echo $TRIDENT_VERSION
 RUN cd /opt \
   && wget https://github.com/NetApp/trident/releases/download/v${TRIDENT_VERSION}/trident-installer-${TRIDENT_VERSION}.tar.gz \
