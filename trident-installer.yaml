@@ -125,7 +125,7 @@ data:
     kubectl create -f /opt/trident-installer/deploy/crds/tridentorchestrator_cr.yaml 
     sleep 5
     i="0"
-    until kubectl describe tprov trident -n trident | grep "Status:.*Installed"
+    until  kubectl describe torc trident | grep "Status:.*Installed"
     do
       sleep 10
       if [ ! $i -lt 40 ]; then
