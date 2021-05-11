@@ -120,10 +120,9 @@ data:
   install.sh: |-
     set -ex
     sleep 3 
-    kubectl apply -f /opt/trident-installer/deploy/crds/trident.netapp.io_tridentprovisioners_crd_post1.16.yaml
+    kubectl apply -f /opt/trident-installer/deploy/crds/trident.netapp.io_tridentorchestrators_crd_post1.16.yaml
     kubectl apply -f /opt/trident-installer/deploy/bundle.yaml
-    kubectl apply -f /opt/trident-installer/deploy/crds/tridentprovisioner_cr.yaml
-    
+    kubectl create -f /opt/trident-installer/deploy/crds/tridentorchestrator_cr.yaml 
     sleep 5
     i="0"
     until kubectl describe tprov trident -n trident | grep "Status:.*Installed"

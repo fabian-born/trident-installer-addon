@@ -1,0 +1,9 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: basicimport
+  namespace: trident
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: basic

@@ -5,3 +5,5 @@ temp
 addon/mcc-checker
 addon/mcc-checker/*
 .gitignore
+example
+example/*
